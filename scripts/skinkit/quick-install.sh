@@ -11,6 +11,7 @@
 set -uo pipefail
 
 ASAR_PATH='/usr/lib/claude-desktop/node_modules/electron/dist/resources/app.asar'
+ASAR_UNPACKED="${ASAR_PATH%.asar}.asar.unpacked"
 BACKUP_PATH="${ASAR_PATH}.skinkit-backup"
 
 script_dir=$(cd -- "$(dirname -- "${BASH_SOURCE[0]}")" &> /dev/null && pwd)
@@ -89,6 +90,11 @@ trap 'rm -rf "$work_dir"' EXIT
 
 echo "Extracting asar..."
 cp "$BACKUP_PATH" "$work_dir/app.asar"
+# The asar references native .node files in app.asar.unpacked — copy it so
+# the extractor can find them. We don't modify it; only app.asar is replaced.
+if [[ -d "$ASAR_UNPACKED" ]]; then
+	cp -a "$ASAR_UNPACKED" "$work_dir/app.asar.unpacked"
+fi
 "$NODE" "$ASAR_HELPER" extract "$work_dir/app.asar" "$work_dir/contents" || {
 	echo 'Error: asar extract failed'
 	exit 1
