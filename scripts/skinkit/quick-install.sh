@@ -52,7 +52,7 @@ if [[ -z "$NODE" ]]; then
 	echo "Install Node.js 20+ via nvm, then retry."
 	exit 1
 fi
-NPX="$(dirname "$NODE")/npx"
+ASAR_HELPER="$script_dir/_asar-helper.js"
 echo "Using Node: $NODE ($("$NODE" --version))"
 
 # ---------------------------------------------------------------------------
@@ -89,7 +89,7 @@ trap 'rm -rf "$work_dir"' EXIT
 
 echo "Extracting asar..."
 cp "$BACKUP_PATH" "$work_dir/app.asar"
-"$NPX" --yes @electron/asar extract "$work_dir/app.asar" "$work_dir/contents" || {
+"$NODE" "$ASAR_HELPER" extract "$work_dir/app.asar" "$work_dir/contents" || {
 	echo 'Error: asar extract failed'
 	exit 1
 }
@@ -124,7 +124,7 @@ mv "${entry_file}.new" "$entry_file"
 rm "$shim"
 
 echo "Repacking asar..."
-"$NPX" --yes @electron/asar pack "$contents" "$work_dir/app.asar.new" || {
+"$NODE" "$ASAR_HELPER" pack "$contents" "$work_dir/app.asar.new" || {
 	echo 'Error: asar pack failed'
 	exit 1
 }
