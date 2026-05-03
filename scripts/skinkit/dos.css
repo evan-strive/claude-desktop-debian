@@ -1,0 +1,157 @@
+/* MS-DOS / Norton Commander skin
+ *   - EGA 16-color palette
+ *   - Cyan #55FFFF borders, yellow #FFFF55 accents, white text on black
+ *   - Square corners, Courier New everywhere
+ */
+
+:root {
+  color-scheme: dark;
+  --dos-bg:        #000000;
+  --dos-text:      #FFFFFF;
+  --dos-cyan:      #55FFFF;
+  --dos-cyan-dim:  #00AAAA;
+  --dos-yellow:    #FFFF55;
+  --dos-blue:      #0000AA;
+  --dos-green:     #55FF55;
+  --dos-red:       #FF5555;
+  --dos-teal:      #2F8C8C;
+}
+
+html, body, #app, #root {
+  background: var(--dos-bg) !important;
+  color: var(--dos-text) !important;
+  font-family: 'Courier New', 'Lucida Console', 'Consolas', monospace !important;
+}
+
+* {
+  font-family: 'Courier New', 'Lucida Console', 'Consolas', monospace !important;
+  border-radius: 0 !important;
+  box-shadow: none !important;
+  text-shadow: none !important;
+  letter-spacing: 0.02em !important;
+}
+
+/* Surfaces */
+body *, [class*="bg-"], [style*="background"] {
+  background-color: var(--dos-bg) !important;
+  background-image: none !important;
+}
+
+/* Headings & emphasis */
+h1, h2, h3, h4, h5, h6, strong, b {
+  color: var(--dos-yellow) !important;
+  font-weight: bold !important;
+}
+
+/* Body text */
+p, span, div, li, td, th, label, dt, dd {
+  color: var(--dos-text) !important;
+}
+
+/* Links */
+a {
+  color: var(--dos-cyan) !important;
+  text-decoration: underline !important;
+}
+a:hover {
+  color: var(--dos-yellow) !important;
+}
+
+/* Buttons */
+button, [role="button"], input[type="button"], input[type="submit"] {
+  background: var(--dos-teal) !important;
+  color: var(--dos-text) !important;
+  border: 1px solid var(--dos-cyan) !important;
+  font-weight: bold !important;
+  padding: 4px 10px !important;
+  cursor: pointer !important;
+}
+button:hover, [role="button"]:hover {
+  background: var(--dos-cyan-dim) !important;
+  color: var(--dos-yellow) !important;
+}
+
+/* Inputs */
+input, textarea, select, [contenteditable="true"], [contenteditable=""] {
+  background: var(--dos-bg) !important;
+  color: var(--dos-text) !important;
+  border: 1px solid var(--dos-cyan) !important;
+  caret-color: var(--dos-yellow) !important;
+}
+input:focus, textarea:focus, [contenteditable]:focus {
+  border-color: var(--dos-yellow) !important;
+  outline: 1px solid var(--dos-yellow) !important;
+  outline-offset: -2px !important;
+}
+input::placeholder, textarea::placeholder {
+  color: var(--dos-cyan-dim) !important;
+}
+
+/* Borders */
+[class*="border"], hr, fieldset {
+  border-color: var(--dos-cyan) !important;
+}
+
+/* Code */
+pre, code, kbd, samp {
+  background: var(--dos-blue) !important;
+  color: var(--dos-green) !important;
+  border: 1px solid var(--dos-cyan) !important;
+  padding: 2px 4px !important;
+  font-family: 'Courier New', monospace !important;
+}
+
+/* Selection */
+::selection {
+  background: var(--dos-yellow) !important;
+  color: var(--dos-bg) !important;
+}
+
+/* Scrollbar */
+::-webkit-scrollbar {
+  width: 14px !important;
+  height: 14px !important;
+}
+::-webkit-scrollbar-track {
+  background: var(--dos-cyan-dim) !important;
+}
+::-webkit-scrollbar-thumb {
+  background: var(--dos-cyan) !important;
+  border: 1px solid var(--dos-text) !important;
+}
+::-webkit-scrollbar-thumb:hover {
+  background: var(--dos-yellow) !important;
+}
+
+/* SVG icons take on cyan tint */
+svg {
+  color: var(--dos-cyan) !important;
+  fill: currentColor !important;
+}
+
+/* Disabled state */
+[disabled], [aria-disabled="true"] {
+  opacity: 0.4 !important;
+  color: var(--dos-cyan-dim) !important;
+}
+
+/* Hide images that might clash with DOS aesthetic? Leave them — could be content */
+
+/* Banner: add a fake DOS top border via body::before */
+body::before {
+  content: "C:\\> CLAUDE.EXE  -  COPYRIGHT (C) ANTHROPIC, NORTON COMMANDER REVIVAL";
+  position: fixed !important;
+  top: 0 !important;
+  left: 0 !important;
+  right: 0 !important;
+  background: var(--dos-cyan-dim) !important;
+  color: var(--dos-text) !important;
+  font-family: 'Courier New', monospace !important;
+  font-size: 11px !important;
+  padding: 1px 8px !important;
+  z-index: 2147483646 !important;
+  pointer-events: none !important;
+  letter-spacing: 0.05em !important;
+  text-align: center !important;
+  border-bottom: 1px solid var(--dos-cyan) !important;
+}

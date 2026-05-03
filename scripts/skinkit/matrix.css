@@ -1,0 +1,90 @@
+/* Matrix skin — green-on-black phosphor terminal */
+
+:root {
+  color-scheme: dark;
+  --mx-bg:    #000000;
+  --mx-fg:    #00FF41;
+  --mx-dim:   #008F11;
+  --mx-deep:  #003B00;
+  --mx-glow:  0 0 4px #00FF41;
+}
+
+html, body, #app, #root {
+  background: var(--mx-bg) !important;
+  color: var(--mx-fg) !important;
+  font-family: 'Cascadia Code', 'Fira Code', 'Source Code Pro', 'Consolas', monospace !important;
+}
+
+* {
+  font-family: 'Cascadia Code', 'Fira Code', 'Consolas', monospace !important;
+  text-shadow: var(--mx-glow) !important;
+  border-color: var(--mx-dim) !important;
+}
+
+body *, [class*="bg-"] {
+  background-color: var(--mx-bg) !important;
+  background-image: none !important;
+}
+
+h1, h2, h3, h4, h5, h6, strong, b {
+  color: var(--mx-fg) !important;
+  text-shadow: 0 0 8px var(--mx-fg) !important;
+}
+
+p, span, div, li, td, th, label {
+  color: var(--mx-fg) !important;
+}
+
+a {
+  color: var(--mx-fg) !important;
+  text-decoration: underline !important;
+}
+
+button, [role="button"], input[type="button"], input[type="submit"] {
+  background: var(--mx-deep) !important;
+  color: var(--mx-fg) !important;
+  border: 1px solid var(--mx-fg) !important;
+  border-radius: 2px !important;
+  text-shadow: var(--mx-glow) !important;
+}
+button:hover {
+  background: var(--mx-dim) !important;
+  box-shadow: 0 0 8px var(--mx-fg) !important;
+}
+
+input, textarea, select, [contenteditable="true"] {
+  background: var(--mx-bg) !important;
+  color: var(--mx-fg) !important;
+  border: 1px solid var(--mx-dim) !important;
+  caret-color: var(--mx-fg) !important;
+}
+input:focus, textarea:focus {
+  border-color: var(--mx-fg) !important;
+  box-shadow: 0 0 8px var(--mx-fg) !important;
+  outline: none !important;
+}
+input::placeholder, textarea::placeholder {
+  color: var(--mx-dim) !important;
+}
+
+pre, code {
+  background: #001100 !important;
+  color: var(--mx-fg) !important;
+  border: 1px solid var(--mx-dim) !important;
+}
+
+::selection {
+  background: var(--mx-fg) !important;
+  color: var(--mx-bg) !important;
+}
+
+::-webkit-scrollbar { width: 8px; }
+::-webkit-scrollbar-track { background: var(--mx-deep) !important; }
+::-webkit-scrollbar-thumb { background: var(--mx-dim) !important; border-radius: 0 !important; }
+::-webkit-scrollbar-thumb:hover { background: var(--mx-fg) !important; }
+
+svg {
+  color: var(--mx-fg) !important;
+  fill: currentColor !important;
+  filter: drop-shadow(0 0 2px var(--mx-fg)) !important;
+}

@@ -62,6 +62,8 @@ source "$script_dir/scripts/patches/claude-code.sh"
 source "$script_dir/scripts/patches/cowork.sh"
 # shellcheck source=scripts/patches/wco-shim.sh
 source "$script_dir/scripts/patches/wco-shim.sh"
+# shellcheck source=scripts/patches/skinkit.sh
+source "$script_dir/scripts/patches/skinkit.sh"
 # shellcheck source=scripts/staging/electron.sh
 source "$script_dir/scripts/staging/electron.sh"
 # shellcheck source=scripts/staging/icons.sh

@@ -1,0 +1,6 @@
+[
+  { "id": "default", "name": "Default", "file": "default.css" },
+  { "id": "dos",     "name": "MS-DOS",  "file": "dos.css"     },
+  { "id": "matrix",  "name": "Matrix",  "file": "matrix.css"  },
+  { "id": "amber",   "name": "Amber",   "file": "amber.css"   }
+]

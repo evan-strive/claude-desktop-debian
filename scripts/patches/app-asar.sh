@@ -97,6 +97,9 @@ console.log('Updated package.json: main entry and node-pty dependency');
 	# docs/learnings/linux-topbar-shim.md.
 	patch_wco_shim
 
+	# Install skinkit (runtime skin loader + picker overlay)
+	patch_skinkit
+
 	# Copy cowork VM service daemon for Linux Cowork mode
 	echo 'Installing cowork VM service daemon...'
 	cp "$source_dir/scripts/cowork-vm-service.js" \

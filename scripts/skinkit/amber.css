@@ -1,0 +1,104 @@
+/* Amber skin — vintage CRT amber phosphor terminal (1970s/80s computer monitor) */
+
+:root {
+  color-scheme: dark;
+  --am-bg:     #1a0e00;
+  --am-bg-2:   #0a0500;
+  --am-fg:     #FFB000;
+  --am-bright: #FFD700;
+  --am-dim:    #8C5F00;
+  --am-glow:   0 0 3px #FFB000;
+}
+
+html, body, #app, #root {
+  background: var(--am-bg-2) !important;
+  color: var(--am-fg) !important;
+  font-family: 'IBM Plex Mono', 'Courier New', 'Consolas', monospace !important;
+}
+
+* {
+  font-family: 'IBM Plex Mono', 'Courier New', monospace !important;
+  text-shadow: var(--am-glow) !important;
+  border-color: var(--am-dim) !important;
+  border-radius: 2px !important;
+}
+
+body *, [class*="bg-"] {
+  background-color: var(--am-bg-2) !important;
+  background-image: none !important;
+}
+
+h1, h2, h3, h4, h5, h6, strong, b {
+  color: var(--am-bright) !important;
+  text-shadow: 0 0 6px var(--am-bright) !important;
+}
+
+p, span, div, li, td, th, label {
+  color: var(--am-fg) !important;
+}
+
+a {
+  color: var(--am-bright) !important;
+}
+
+button, [role="button"] {
+  background: var(--am-bg) !important;
+  color: var(--am-fg) !important;
+  border: 1px solid var(--am-fg) !important;
+}
+button:hover {
+  background: var(--am-dim) !important;
+  color: var(--am-bright) !important;
+}
+
+input, textarea, [contenteditable="true"] {
+  background: var(--am-bg) !important;
+  color: var(--am-fg) !important;
+  border: 1px solid var(--am-dim) !important;
+  caret-color: var(--am-bright) !important;
+}
+input:focus, textarea:focus {
+  border-color: var(--am-fg) !important;
+  box-shadow: 0 0 6px var(--am-fg) !important;
+  outline: none !important;
+}
+input::placeholder, textarea::placeholder {
+  color: var(--am-dim) !important;
+}
+
+pre, code {
+  background: var(--am-bg) !important;
+  color: var(--am-bright) !important;
+  border: 1px solid var(--am-dim) !important;
+}
+
+::selection {
+  background: var(--am-fg) !important;
+  color: var(--am-bg-2) !important;
+}
+
+::-webkit-scrollbar { width: 10px; }
+::-webkit-scrollbar-track { background: var(--am-bg) !important; }
+::-webkit-scrollbar-thumb { background: var(--am-dim) !important; }
+::-webkit-scrollbar-thumb:hover { background: var(--am-fg) !important; }
+
+svg {
+  color: var(--am-fg) !important;
+  fill: currentColor !important;
+}
+
+/* Subtle scanlines overlay for true CRT feel */
+body::after {
+  content: "";
+  position: fixed !important;
+  inset: 0 !important;
+  pointer-events: none !important;
+  z-index: 2147483645 !important;
+  background: repeating-linear-gradient(
+    to bottom,
+    rgba(0,0,0,0) 0px,
+    rgba(0,0,0,0) 2px,
+    rgba(0,0,0,0.15) 3px,
+    rgba(0,0,0,0.15) 3px
+  ) !important;
+}
