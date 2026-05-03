@@ -142,20 +142,22 @@ module.exports = function installSkinkit(electron) {
   const skinsJson = JSON.stringify(skins);
   const injection = buildInjection(skinsJson);
 
-  electron.app.on('browser-window-created', (_event, win) => {
-    if (!win || !win.webContents) return;
+  // Use web-contents-created (not browser-window-created) so we also catch
+  // BrowserView/WebContentsView instances — that's where claude.ai actually renders.
+  electron.app.on('web-contents-created', (_event, wc) => {
+    if (!wc) return;
 
     const inject = () => {
-      win.webContents.executeJavaScript(injection, true).catch((err) => {
+      wc.executeJavaScript(injection, true).catch((err) => {
         console.error('[Skinkit] Injection failed:', err && err.message);
       });
     };
 
-    win.webContents.on('did-finish-load', inject);
-    win.webContents.on('did-frame-finish-load', (_e, isMain) => {
+    wc.on('did-finish-load', inject);
+    wc.on('did-frame-finish-load', (_e, isMain) => {
       if (isMain) inject();
     });
   });
 
-  console.log('[Skinkit] Hook installed on browser-window-created');
+  console.log('[Skinkit] Hook installed on web-contents-created');
 };
