@@ -14,6 +14,15 @@
 
 set -uo pipefail
 
+# sudo drops nvm/user PATH; re-exec with the invoking user's PATH preserved.
+if [[ -n "${SUDO_USER:-}" && -z "${SKINKIT_PATH_PRESERVED:-}" ]]; then
+	user_path=$(sudo -u "$SUDO_USER" bash -lc 'echo "$PATH"' 2>/dev/null || echo '')
+	if [[ -n "$user_path" ]]; then
+		exec sudo env PATH="$user_path" SKINKIT_PATH_PRESERVED=1 \
+			"$(realpath "$0")" "$@"
+	fi
+fi
+
 ASAR_PATH='/usr/lib/claude-desktop/node_modules/electron/dist/resources/app.asar'
 BACKUP_PATH="${ASAR_PATH}.skinkit-backup"
 
